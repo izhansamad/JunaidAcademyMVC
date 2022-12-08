@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Junaid Academy</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Unicat project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="~/Content/js/slick/slick.css">
+    <link rel="stylesheet" href="~/Content/js/slick/slick-theme.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/Content/js/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/Content/js/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/js/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/js/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css">
+    <link href="~/Content/styles/courses.css" rel="stylesheet" />
+    <link href="~/Content/styles/about.css" rel="stylesheet" />
+    <link href="~/Content/styles/contact.css" rel="stylesheet" />
+    @RenderSection("coursecss", false)
+
+</head>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+<body>
+    <!-- Header -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header class="header">
+
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                    <ul class="top_bar_contact_list">
+                                        <li><div class="question">Have any questions?</div></li>
+                                        <li>
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <div>+92 123 456 7890</div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                            <div>junaidacademy@gmail.com</div>
+                                        </li>
+                                    </ul>
+                                    <div class="top_bar_login ml-auto">
+                                        <div class="login_button">@Html.ActionLink("Logout", "Logout", "Home")</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Content -->
+            <div class="header_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="logo_container">
+                                    <a href="#">
+                                        <div class="logo_text">
+                                            <span>
+                                                <image src="~/Content/images/logo.png" style="    width: 35px;
+										margin-right: 10px;
+									">
+                                            </span>Junaid <span>Academy</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <nav class="main_nav_contaner ml-auto">
+                                    <ul class="main_nav">
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Student")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
+
+                                        <!-- <li><a href="#" class="btn py-4 px-lg-3 d-none d-lg-block" style="background-color: #efaf06; color: white;">Join Now<i class="fa fa-arrow-right ms-3"></i></a></li> -->
+
+                                    </ul>
+                                    <div class="hamburger menu_mm">
+                                        <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                    </div>
+                                </nav>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+            <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+            <nav class="menu_nav">
+                <ul class="menu_mm">
+                    <li class="menu_mm">@Html.ActionLink("Home", "Index", "Student")</li>
+                    <li class="menu_mm">@Html.ActionLink("Courses", "Courses", "Home")</li>
+                </ul>
+            </nav>
+        </div>
+
+    }
+    else
+    {
+        <header class="header">
+
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                                    <ul class="top_bar_contact_list">
+                                        <li><div class="question">Have any questions?</div></li>
+                                        <li>
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <div>+92 123 456 7890</div>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                            <div>junaidacademy@gmail.com</div>
+                                        </li>
+                                    </ul>
+                                    <div class="top_bar_login ml-auto">
+                                        <div class="login_button">@Html.ActionLink("Login or Register", "Login", "Home")</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Content -->
+            <div class="header_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="logo_container">
+                                    <a href="#">
+                                        <div class="logo_text">
+                                            <span>
+                                                <image src="~/Content/images/logo.png" style="    width: 35px;
+										margin-right: 10px;
+									">
+                                            </span>Junaid <span>Academy</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <nav class="main_nav_contaner ml-auto">
+                                    <ul class="main_nav">
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">@Html.ActionLink("About", "About", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Faculty" ? "active" : "")">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                                    </ul>
+                                    <div class="hamburger menu_mm">
+                                        <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                    </div>
+                                </nav>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+            <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+            <nav class="menu_nav">
+                <ul class="menu_mm">
+                    <li class="menu_mm">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="menu_mm">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="menu_mm">@Html.ActionLink("Courses", "Courses", "Home")</li>
+                    <li class="menu_mm">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
+                    <li class="menu_mm">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </nav>
+        </div>
+    }
+
+
+
+    <!-- Menu -->
+
+
+
+    <div class="spacer">
+    </div>
+    @RenderBody()
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
+        <div class="container">
+            <div class="row footer_row">
+                <div class="col">
+                    <div class="footer_content">
+                        <div class="row">
+
+                            <div class="col-lg-3 footer_col">
+
+                                <!-- Footer About -->
+                                <div class="footer_section footer_about">
+                                    <div class="footer_logo_container">
+                                        <a href="#">
+                                            <div class="footer_logo_text">Junaid <span>Academy</span></div>
+                                        </a>
+                                    </div>
+                                    <div class="footer_about_text">
+                                        <p>Junaid Academy is a Coaching institute loacated in malir which provides coaching classes for SSC, HSC, Bcom, BA, Mcom students and also offers computer courses.</p>
+                                    </div>
+                                    <div class="footer_social">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 footer_col">
+
+                                <!-- Footer Contact -->
+                                <div class="footer_section footer_contact">
+                                    <div class="footer_title">Contact Us</div>
+                                    <div class="footer_contact_info">
+                                        <ul>
+                                            <li>Email: JunaidAcademy@gmail.com</li>
+                                            <li>Phone:  +92 123 456 7890</li>
+                                            <li>Malir City, Karachi</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 footer_col">
+
+                                <!-- Footer links -->
+                                <div class="footer_section footer_links">
+                                    <div class="footer_title">Important Links</div>
+                                    <div class="footer_links_container">
+                                        <ul>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">@Html.ActionLink("About", "About", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Faculty" ? "active" : "")">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Enroll" ? "active" : "")">@Html.ActionLink("Enroll Now", "Enroll", "Home")</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row copyright_row">
+                <div class="col">
+                    <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
+                        <div class="cr_text">
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | Team Innovators
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Content/styles/bootstrap4/popper.js"></script>
+    <script src="~/Content/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/js/slick/slick.js"></script>
+    <script src="~/Content/js/plugins/greensock/TweenMax.min.js"></script>
+    <script src="~/Content/js/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="~/Content/js/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="~/Content/js/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="~/Content/js/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="~/Content/js/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/Content/js/custom.js"></script>
+    @RenderSection("course_js", false)
+    @RenderSection("About_js", false)
+    @RenderSection("scripts", false)
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
+</body>
+</html>

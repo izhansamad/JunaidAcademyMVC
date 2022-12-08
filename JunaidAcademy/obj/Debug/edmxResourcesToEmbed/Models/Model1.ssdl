@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JunaidAcademyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" MaxLength="50" />
+    <Property Name="CourseDescription" Type="varchar" MaxLength="500" />
+    <Property Name="CourseFee" Type="varchar" MaxLength="50" />
+    <Property Name="CourseDuration" Type="varchar" MaxLength="50" />
+    <Property Name="CourseSeats" Type="int" />
+    <Property Name="CourseImg" Type="varchar(max)" />
+    <Property Name="TID" Type="int" />
+  </EntityType>
+  <EntityType Name="CourseAssign">
+    <Key>
+      <PropertyRef Name="CourseAssignID" />
+    </Key>
+    <Property Name="CourseAssignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="CourseID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TName" Type="varchar" MaxLength="50" />
+    <Property Name="TGender" Type="varchar" MaxLength="50" />
+    <Property Name="TSubject" Type="varchar" MaxLength="50" />
+    <Property Name="TContact" Type="int" />
+    <Property Name="Image" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Course_Teacher">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssign_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="CourseAssign" Type="Self.CourseAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseAssign">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssign_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="CourseAssign" Type="Self.CourseAssign" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CourseAssign">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JunaidAcademyModelStoreContainer">
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseAssign" EntityType="Self.CourseAssign" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Course_Teacher" Association="Self.FK_Course_Teacher">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssign_Course" Association="Self.FK_CourseAssign_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseAssign" EntitySet="CourseAssign" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssign_User" Association="Self.FK_CourseAssign_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CourseAssign" EntitySet="CourseAssign" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

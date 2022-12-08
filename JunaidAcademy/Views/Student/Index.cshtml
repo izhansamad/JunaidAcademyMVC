@@ -1,0 +1,44 @@
+﻿@model IEnumerable<JunaidAcademy.Models.CourseAssign>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="sidebar col-3">
+
+        </div>
+        <div class="table col-12">
+            <h2 style="margin-top: 60px;">Enrolled Courses</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="table-active" scope="col"></th>
+                        <th class="table-active" scope="col">@Html.DisplayNameFor(model => model.Course.CourseName)</th>
+                        <th class="table-active" scope="col">Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="table-success" scope="row">@i</td>
+                            <td class="table-success">
+                                @Html.DisplayFor(modelItem => item.Course.CourseName)
+                            </td>
+                            <td class="table-success">@Html.DisplayFor(modelItem => item.Course.Teacher.TName)</td>
+                        </tr>
+                        @(i++)
+                    }
+
+                </tbody>
+            </table>
+            <div class="btn"><form action="#" style="margin: auto;"><button class="comment_button trans_200 enroll_btn"><a href="@Url.Action("Courses","Home")" class="text-white">Enroll Another Course</a></button></form></div>
+
+        </div>
+
+    </div>
+</div>
+

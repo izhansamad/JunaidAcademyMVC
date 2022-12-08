@@ -1,0 +1,80 @@
+﻿@model IEnumerable<JunaidAcademy.Models.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+
+<div class="headerimg_container">
+    <!-- <img src="./images/home_slider_1.jpg" alt=""> -->
+    <div class="home_slider_content">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="home_slider_title" style="font-size: 50px;">
+                        Junaid <span style="color:#efaf06;">Academy</span>
+                    </div>
+                    <div class="home_slider_subtitle"
+                         style="font-weight: 900; color: #384158; font-size: 25px;">OUR COURSES</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="courses">
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="section_title_containers text-center">
+                    <h2 class="section_title">Our Courses</h2>
+                    <div class="section_subtitle"><p style="font-size: 17px;">Junaid Academy currently offering the following courses</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="courses_container">
+            <div class="row courses_row">
+
+
+                @foreach (var item in Model)
+                {
+                    <!-- Course -->
+                    <div class="col-lg-4 course_col">
+                        <div class="course">
+                            <div class="course_image"><img src="~/Content/images/course_4.jpg" alt=""></div>
+                            <div class="course_body">
+                                @*<h3 class="course_title"><a href="course.html">Software Training</a></h3>*@
+                                <h3 class="course_title">
+                                    <a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)">
+                                        @Html.DisplayFor(modelItem => item.CourseName)
+                                    </a>
+                                </h3>
+                                <div class="course_teacher">@Html.DisplayFor(modelItem => item.Teacher.TGender)  @Html.DisplayFor(modelItem => item.Teacher.TName)</div>
+                                <div class="course_text">
+                                    <p>@Html.DisplayFor(modelItem => item.CourseDescription)</p>
+                                </div>
+                            </div>
+                            <div class="course_footer">
+                                <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                    <div class="course_info">
+                                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                        <span>@Html.DisplayFor(modelItem => item.CourseSeats) Student</span>
+                                    </div>
+                                    <div class="course_info">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        <span>@Html.DisplayFor(modelItem => item.CourseDuration)</span>
+                                    </div>
+                                    <div class="course_price ml-auto">Rs @Html.DisplayFor(modelItem => item.CourseFee)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+        </div>
+    </div>
+</div>
+
+

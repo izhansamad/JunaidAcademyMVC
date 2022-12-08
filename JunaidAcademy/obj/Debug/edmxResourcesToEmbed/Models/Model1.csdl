@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JunaidAcademyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="JunaidAcademyEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(JunaidAcademyModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(JunaidAcademyModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Courses" EntityType="JunaidAcademyModel.Course" />
+    <EntitySet Name="CourseAssigns" EntityType="JunaidAcademyModel.CourseAssign" />
+    <EntitySet Name="Teachers" EntityType="JunaidAcademyModel.Teacher" />
+    <EntitySet Name="Users" EntityType="JunaidAcademyModel.User" />
+    <AssociationSet Name="FK_Course_Teacher" Association="JunaidAcademyModel.FK_Course_Teacher">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Course1" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssign_Course1" Association="JunaidAcademyModel.FK_CourseAssign_Course1">
+      <End Role="Course1" EntitySet="Courses" />
+      <End Role="CourseAssign1" EntitySet="CourseAssigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseAssign_User1" Association="JunaidAcademyModel.FK_CourseAssign_User1">
+      <End Role="User1" EntitySet="Users" />
+      <End Role="CourseAssign1" EntitySet="CourseAssigns" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CourseFee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseDuration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseSeats" Type="Int32" />
+    <Property Name="CourseImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TID" Type="Int32" />
+    <NavigationProperty Name="Teacher" Relationship="JunaidAcademyModel.FK_Course_Teacher" FromRole="Course1" ToRole="Teacher" />
+    <NavigationProperty Name="CourseAssigns" Relationship="JunaidAcademyModel.FK_CourseAssign_Course1" FromRole="Course1" ToRole="CourseAssign1" />
+  </EntityType>
+  <EntityType Name="CourseAssign">
+    <Key>
+      <PropertyRef Name="CourseAssignID" />
+    </Key>
+    <Property Name="CourseAssignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="CourseID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="JunaidAcademyModel.FK_CourseAssign_Course1" FromRole="CourseAssign1" ToRole="Course1" />
+    <NavigationProperty Name="User" Relationship="JunaidAcademyModel.FK_CourseAssign_User1" FromRole="CourseAssign1" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TContact" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Courses" Relationship="JunaidAcademyModel.FK_Course_Teacher" FromRole="Teacher" ToRole="Course1" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CourseAssigns" Relationship="JunaidAcademyModel.FK_CourseAssign_User1" FromRole="User1" ToRole="CourseAssign1" />
+  </EntityType>
+  <Association Name="FK_Course_Teacher">
+    <End Type="JunaidAcademyModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+    <End Type="JunaidAcademyModel.Course" Role="Course1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="Course1">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssign_Course1">
+    <End Type="JunaidAcademyModel.Course" Role="Course1" Multiplicity="0..1" />
+    <End Type="JunaidAcademyModel.CourseAssign" Role="CourseAssign1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course1">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseAssign1">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseAssign_User1">
+    <End Type="JunaidAcademyModel.User" Role="User1" Multiplicity="0..1" />
+    <End Type="JunaidAcademyModel.CourseAssign" Role="CourseAssign1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CourseAssign1">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<JunaidAcademy.Models.CourseAssign>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="spacer"></div>
+<div class="container">
+    @Html.ActionLink("Back", "Index", "Admin")
+
+    <h2>Assign Course</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Username)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Username)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseAssignID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CourseAssignID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseAssignID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="spacer"></div>
