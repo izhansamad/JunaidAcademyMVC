@@ -77,7 +77,17 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Student")</li>
+                                        @if (User.Identity.Name == "Admin" || User.Identity.Name == "admin")
+                                        {
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Admin")</li>
+
+                                        }
+                                        else
+                                        {
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Student")</li>
+
+                                        }
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Faculty" ? "active" : "")">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
 
                                         <!-- <li><a href="#" class="btn py-4 px-lg-3 d-none d-lg-block" style="background-color: #efaf06; color: white;">Join Now<i class="fa fa-arrow-right ms-3"></i></a></li> -->
@@ -100,6 +110,7 @@
             <nav class="menu_nav">
                 <ul class="menu_mm">
                     <li class="menu_mm">@Html.ActionLink("Home", "Index", "Student")</li>
+                    <li class="menu_mm">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
                     <li class="menu_mm">@Html.ActionLink("Courses", "Courses", "Home")</li>
                 </ul>
             </nav>
@@ -157,8 +168,8 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"> @Html.ActionLink("Home", "Index", "Home")</li>
-                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">@Html.ActionLink("About", "About", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">  @Html.ActionLink("Home", "Index", "Home")</li>
+                                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">  @Html.ActionLink("About", "About", "Home")</li>
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Faculty" ? "active" : "")">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
                                         <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -194,11 +205,11 @@
 
 
     <!-- Menu -->
-
-
-
+    
     <div class="spacer">
     </div>
+
+
     @RenderBody()
 
 
@@ -264,7 +275,8 @@
                                             <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Courses" ? "active" : "")">@Html.ActionLink("Courses", "Courses", "Home")</li>
                                             <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Faculty" ? "active" : "")">@Html.ActionLink("Faculty", "Faculty", "Home")</li>
                                             <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("Contact", "Contact", "Home")</li>
-                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Enroll" ? "active" : "")">@Html.ActionLink("Enroll Now", "Enroll", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Login" ? "active" : "")">@Html.ActionLink("Login", "Login", "Home")</li>
+                                            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Register" ? "active" : "")">@Html.ActionLink("Register", "Register", "Home")</li>
                                         </ul>
                                     </div>
                                 </div>

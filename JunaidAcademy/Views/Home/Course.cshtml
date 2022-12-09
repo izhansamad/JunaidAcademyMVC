@@ -1,4 +1,6 @@
-﻿@model JunaidAcademy.Models.Course
+﻿@using System.Linq;
+@using System.Data.Entity;
+@model JunaidAcademy.Models.Course
 @{
     ViewBag.Title = "Course";
 }
@@ -19,7 +21,14 @@
                     <div class="course_title">@Html.DisplayFor(modelItem => modelItem.CourseName)</div>
 
                     <!-- Course Image -->
-                    <div class="course_image"><img src="~/Content/images/course_image.jpg" alt=""></div>
+                    @if (Model.CourseImg != null)
+                    {
+                        <div class="course_image"><img src="@Url.Content(Model.CourseImg)" alt=""></div>
+                    }
+                    else
+                    {
+                       <div class="course_image"><img src="~/Content/images/course_image.jpg" alt=""></div>
+                    }
 
                     <!-- Course Tabs -->
                     <div class="course_tabs_container">
@@ -119,7 +128,13 @@
                         <div class="sidebar_section_title">Teacher</div>
                         <div class="sidebar_teacher">
                             <div class="teacher_title_container d-flex flex-row align-items-center justify-content-start">
-                                <div class="teacher_image"><img src="~/Content/images/faculty.png" alt=""></div>
+                                @if (Model.Teacher.Image != null)
+                                {
+                                    <div class="teacher_image"><img src="@Url.Content(Model.Teacher.Image)" alt=""></div>
+                                }
+                                else                         {
+                                    <div class="teacher_image"><img src="~/Content/images/faculty.png" alt=""></div>
+                                }
                                 <div class="teacher_title">
                                     <div class="teacher_name"><a href="#">@Html.DisplayFor(modelItem => modelItem.Teacher.TName)</a></div>
                                     <div class="teacher_position">@Html.DisplayFor(modelItem => modelItem.Teacher.TSubject)</div>

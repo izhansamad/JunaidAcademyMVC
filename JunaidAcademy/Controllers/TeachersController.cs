@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -47,10 +48,17 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TeacherID,TName,TGender,TSubject,TContact,Image")] Teacher teacher)
+        public ActionResult Create([Bind(Include = "TeacherID,TName,TGender,TSubject,TContact")] Teacher teacher, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
+                if (Image != null)
+                {
+                    var fileName = Path.GetFileName(Image.FileName);
+                    var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
+                    Image.SaveAs(path);
+                    teacher.Image = "/uploads/" + fileName;
+                }
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,10 +87,17 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TeacherID,TName,TGender,TSubject,TContact,Image")] Teacher teacher)
+        public ActionResult Edit([Bind(Include = "TeacherID,TName,TGender,TSubject,TContact")] Teacher teacher, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
+                if (Image != null)
+                {
+                    var fileName = Path.GetFileName(Image.FileName);
+                    var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
+                    Image.SaveAs(path);
+                    teacher.Image = "/uploads/" + fileName;
+                }
                 db.Entry(teacher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

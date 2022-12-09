@@ -1,44 +1,6 @@
 @charset "utf-8";
-/* CSS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. Fonts
-2. Body and some general stuff
-3. Header
-	3.1 Top Bar
-	3.2 Header Content
-	3.3 Logo
-	3.4 Main Nav
-	3.5 Hamburger
-4. Menu
-5. Section
-6. Home
-7. Features
-8. Courses
-9. Counter
-10. Events
-11. Team
-12. News
-13. Newsletter
-14. Footer
-
-
-
-******************************/
-
-/***********
-1. Fonts
-***********/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900');
-
-/*********************************
-2. Body and some general stuff
-*********************************/
-
 *
 {
 	margin: 0;
@@ -745,9 +707,9 @@ section
 5. Section
 *********************************/
 
-.section_title_container
+.section_title_container 
 {
-	max-width: 600px;
+	max-width: 850px;
 	margin: 0 auto;
 }
 .section_title

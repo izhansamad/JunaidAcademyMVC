@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -49,10 +50,17 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,CourseName,CourseDescription,CourseFee,CourseDuration,CourseSeats,CourseImg,TID")] Course course)
+        public ActionResult Create([Bind(Include = "CourseID,CourseName,CourseDescription,CourseFee,CourseDuration,CourseSeats,TID")] Course course, HttpPostedFileBase CourseImg)
         {
             if (ModelState.IsValid)
             {
+                if (CourseImg != null)
+                {
+                    var fileName = Path.GetFileName(CourseImg.FileName);
+                    var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
+                    CourseImg.SaveAs(path);
+                    course.CourseImg = "/uploads/" + fileName;
+                }
                 db.Courses.Add(course);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,10 +91,17 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseID,CourseName,CourseDescription,CourseFee,CourseDuration,CourseSeats,CourseImg,TID")] Course course)
+        public ActionResult Edit([Bind(Include = "CourseID,CourseName,CourseDescription,CourseFee,CourseDuration,CourseSeats,TID")] Course course, HttpPostedFileBase CourseImg)
         {
             if (ModelState.IsValid)
             {
+                if (CourseImg != null)
+                {
+                    var fileName = Path.GetFileName(CourseImg.FileName);
+                    var path = Path.Combine(Server.MapPath("~/uploads"), fileName);
+                    CourseImg.SaveAs(path);
+                    course.CourseImg = "/uploads/" + fileName;
+                }
                 db.Entry(course).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,4 +1,5 @@
 ﻿using JunaidAcademy.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -15,7 +16,7 @@ namespace JunaidAcademy.Controllers
         public ActionResult Index()
         {
             dynamic dy = new ExpandoObject();
-            dy.courseList = getCourses().Take(6);
+            dy.courseList = getCourses().Take(5);
             dy.teacherList = getTeacher().Take(4);
             return View(dy);
         }
@@ -34,7 +35,7 @@ namespace JunaidAcademy.Controllers
         {
             //ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(db.Teachers.ToList().Take(4));
         }
         public ActionResult Contact()
         {
@@ -46,14 +47,29 @@ namespace JunaidAcademy.Controllers
         {
             return View(db.Courses.ToList());
         }
+        //private int GetUserID()
+        //{       //    var userId = db.Users.Where(w => w.Username == User.Identity.Name).First();
+        //    return userId.UserID;
+        //}
         private int GetUserID()
         {
-            var userId = db.Users.Where(w => w.Username == User.Identity.Name).First();
-            return userId.UserID;
+            var userId = db.Users.Where(w => w.Username == User.Identity.Name).FirstOrDefault();
+            if (userId != null)
+            {
+                return userId.UserID;
+            }
+            else
+            {
+                return 0;
+            }
         }
         public ActionResult Course(int id)
         {
             var userId = GetUserID();
+            if (userId == 0)
+            {
+                return View(db.Courses.Where(w => w.CourseID == id).First());
+            }
             if (db.CourseAssigns.Any(a => a.CourseID == id && a.UserID == userId))
             {
                 TempData["AlreadyRegistered"] = "Already Registered in this Course";

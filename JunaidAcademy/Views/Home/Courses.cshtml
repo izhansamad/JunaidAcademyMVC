@@ -44,8 +44,17 @@
                     <!-- Course -->
                     <div class="col-lg-4 course_col">
                         <div class="course">
-                            <div class="course_image"><img src="~/Content/images/course_4.jpg" alt=""></div>
-                            <div class="course_body">
+                            @if (item.CourseImg != null)
+                            {
+                                <div class="course_image" style="height: 220px !important"><a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)"><img src="@Url.Content(item.CourseImg)" alt=""></a></div>
+
+                            }
+                            else
+                            {
+                                <div class="course_image" style="height: 220px !important"><a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)"><img src="~/Content/images/course_2.jpg" alt=""></a></div>
+
+                            }
+                            <div class="course_body" style="height: 192px !important">
                                 @*<h3 class="course_title"><a href="course.html">Software Training</a></h3>*@
                                 <h3 class="course_title">
                                     <a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)">
@@ -54,7 +63,12 @@
                                 </h3>
                                 <div class="course_teacher">@Html.DisplayFor(modelItem => item.Teacher.TGender)  @Html.DisplayFor(modelItem => item.Teacher.TName)</div>
                                 <div class="course_text">
-                                    <p>@Html.DisplayFor(modelItem => item.CourseDescription)</p>
+                                    @{
+                                        var words = item.CourseDescription.Split(' ');
+                                        var first15words = words.Take(15);
+                                        string first15WordsString = string.Join(" ", first15words);
+                                    }
+                                    <p>@first15WordsString...</p>
                                 </div>
                             </div>
                             <div class="course_footer">

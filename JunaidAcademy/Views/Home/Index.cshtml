@@ -76,8 +76,8 @@
         <div class="row">
             <div class="col">
                 <div class="section_title_container text-center">
-                    <h2 class="section_title">Our Courses</h2>
-                    <div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
+                    <h2 class="section_title">Our Featured Courses</h2>
+                    <div class="section_subtitle"><p>Our courses are designed to give you the skills and knowledge you need to succeed in your chosen field. We have courses in a variety of topics, ranging from business and finance to computer science and engineering.</p></div>
                 </div>
             </div>
         </div>
@@ -87,8 +87,17 @@
                 <!-- Course -->
                 <div class="col-lg-12 course_col">
                     <div class="course">
-                        <div class="course_image"><img src="~/Content/images/course_1.jpg" alt=""></div>
-                        <div class="course_body">
+                        @if(item.CourseImg != null)
+                        {
+                            <div class="course_image" style="height: 220px !important"><img src="@Url.Content(item.CourseImg)" alt=""></div>
+
+                        }
+                        else
+                        {
+                            <div class="course_image" style="height: 220px !important"><img src="~/Content/images/course_1.jpg" alt=""></div>
+
+                        }
+                        <div class="course_body" style="height: 192px !important">
                             <h3 class="course_title">
                                 <a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)">
                                     @Html.DisplayFor(modelItem => item.CourseName)
@@ -96,7 +105,13 @@
                             </h3>
                             <div class="course_teacher">@Html.DisplayFor(modelItem => item.Teacher.TGender)  @Html.DisplayFor(modelItem => item.Teacher.TName)</div>
                             <div class="course_text">
-                                <p>@Html.DisplayFor(modelItem => item.CourseDescription)</p>
+                                @*<p>@Html.DisplayFor(modelItem => item.CourseDescription)</p>*@
+                                @{ 
+                                    var words = item.CourseDescription.Split(' ');
+                                    var first15words = words.Take(15);
+                                    string first15WordsString = string.Join(" ", first15words);
+                                }
+                                <p>@first15WordsString</p>
                             </div>
                         </div>
                         <div class="course_footer">
@@ -112,77 +127,7 @@
                 </div>
             }
 
-            <!-- Course -->
-            <!--<div class="col-lg-12 course_col">
-                <div class="course" style="height: 474px !important;">
-                    <div class="course_image"><img src="~/Content/images/course_3.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="#">Graphic Designing Course</a></h3>
-                        <div class="course_teacher">Sir XYZ</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
-                            </div>
-                            <div class="course_price ml-auto">Rs6500</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Course -->
-            <!--<div class="col-lg-12 course_col">
-                <div class="course">
-                    <div class="course_image"><img src="~/Content/images/course_2.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="#">Web Development & Engineering</a></h3>
-                        <div class="course_teacher">Sir XYZ</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
-                            </div>-->
-            <!-- <div class="course_info">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span>5 Ratings</span>
-            </div> -->
-            <!--<div class="course_price ml-auto">Rs7000</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Course -->
-            <!--<div class="col-lg-12 course_col">
-                <div class="course">
-                    <div class="course_image"><img src="~/Content/images/english.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="#">English Language and Linguistics</a></h3>
-                        <div class="course_teacher">Sir XYZ</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
-                            </div>
-                            <div class="course_price ml-auto"><span></span>Rs5000</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-
+            
         </div>
         <div class="row">
             <div class="col">
@@ -201,7 +146,7 @@
             <div class="col-lg-6">
                 <div class="counter_content">
                     <h2 class="counter_title">Register Now</h2>
-                    <div class="counter_text"><p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div>
+                    <div class="counter_text"><p>We are excited to offer a variety of courses that can help you reach your goals. Our courses are designed to give you the skills and knowledge you need to succeed in your chosen field. Don't wait any longer, register now and start your journey towards success!</p></div>
 
                     <!-- Milestones -->
 
@@ -271,7 +216,7 @@
             <div class="col">
                 <div class="section_title_container text-center">
                     <h2 class="section_title">Our Faculty</h2>
-                    <div class="section_subtitle"><p>Junaid Academy got the highly professional and certified faculty for each and every course and subject.</p></div>
+                    <div class="section_subtitle"><p>Our courses are taught by experienced instructors who have years of experience in their respective fields. They will provide you with the guidance and support you need to succeed. Our courses are designed to be both challenging and rewarding, so you will be able to get the most out of your learning experience.</p></div>
                 </div>
             </div>
         </div>
@@ -282,7 +227,16 @@
                 <!-- Team Item -->
                 <div class="col-lg-3 col-md-6 team_col">
                     <div class="team_item">
-                        <div class="team_image"><img src="~/Content/images/faculty.png" alt=""></div>
+                        @if (item.Image != null)
+                        {
+                            <div class="team_image"><img src="@Url.Content(item.Image)" alt=""></div>
+
+                        }
+                        else
+                        {
+                            <div class="team_image"><img src="~/Content/images/faculty.png" alt=""></div>
+
+                        }
                         <div class="team_body">
                             <div class="team_title"><a href="#">@Html.DisplayFor(modelItem => item.TName)</a></div>
                             <div class="team_subtitle">@Html.DisplayFor(modelItem => item.TSubject)</div>

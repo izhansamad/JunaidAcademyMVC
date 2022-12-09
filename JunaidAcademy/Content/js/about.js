@@ -1,30 +1,8 @@
-/* JS Document */
 
-/******************************
-
-[Table of Contents]
-
-1. Vars and Inits
-2. Set Header
-3. Init Menu
-4. Init Header Search
-5. Init Accordions
-6. Init Video
-7. Initialize Milestones
-8. Init Partners Slider
-
-
-******************************/
 
 $(document).ready(function()
 {
 	"use strict";
-
-	/* 
-
-	1. Vars and Inits
-
-	*/
 
 	var header = $('.header');
 	var menuActive = false;
@@ -212,28 +190,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
 
-	6. Init Video
-
-	*/
-
-	function initVideo()
-	{
-		$(".vimeo").colorbox(
-		{
-			iframe:true,
-			innerWidth:640,
-			innerHeight:409,
-			maxWidth: '90%'
-		});
-	}
-
-	/* 
-
-	7. Initialize Milestones
-
-	*/
 
 	function initMilestones()
 	{

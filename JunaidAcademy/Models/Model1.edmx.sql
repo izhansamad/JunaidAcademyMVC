@@ -52,7 +52,7 @@ GO
 CREATE TABLE [dbo].[Courses] (
     [CourseID] int IDENTITY(1,1) NOT NULL,
     [CourseName] varchar(50)  NULL,
-    [CourseDescription] varchar(500)  NULL,
+    [CourseDescription] varchar(max)  NULL,
     [CourseFee] varchar(50)  NULL,
     [CourseDuration] varchar(50)  NULL,
     [CourseImg] varchar(max)  NULL,
