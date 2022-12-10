@@ -21,6 +21,7 @@ namespace JunaidAcademy.Controllers
         {
             return View(db.Users.Where(w => w.Username != "Admin").ToList());
         }
+
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {

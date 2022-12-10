@@ -50,7 +50,6 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="JunaidAcademyModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

@@ -12,8 +12,6 @@ namespace JunaidAcademy.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
 
     public partial class Course
     {
@@ -22,7 +20,7 @@ namespace JunaidAcademy.Models
         {
             this.CourseAssigns = new HashSet<CourseAssign>();
         }
-    
+
         public int CourseID { get; set; }
         [Required]
         public string CourseName { get; set; }
@@ -40,7 +38,7 @@ namespace JunaidAcademy.Models
         public Nullable<int> CourseSeats { get; set; }
         public string CourseImg { get; set; }
         public Nullable<int> TID { get; set; }
-    
+
         public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CourseAssign> CourseAssigns { get; set; }

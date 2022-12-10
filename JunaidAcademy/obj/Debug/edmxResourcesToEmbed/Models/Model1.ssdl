@@ -6,7 +6,7 @@
     </Key>
     <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CourseName" Type="varchar" MaxLength="50" />
-    <Property Name="CourseDescription" Type="varchar" MaxLength="500" />
+    <Property Name="CourseDescription" Type="varchar(max)" />
     <Property Name="CourseFee" Type="varchar" MaxLength="50" />
     <Property Name="CourseDuration" Type="varchar" MaxLength="50" />
     <Property Name="CourseSeats" Type="int" />
@@ -39,7 +39,7 @@
     <Property Name="TName" Type="varchar" MaxLength="50" />
     <Property Name="TGender" Type="varchar" MaxLength="50" />
     <Property Name="TSubject" Type="varchar" MaxLength="50" />
-    <Property Name="TContact" Type="int" />
+    <Property Name="TContact" Type="varchar" MaxLength="50" />
     <Property Name="Image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="User">
@@ -51,9 +51,8 @@
     <Property Name="Password" Type="varchar" MaxLength="50" />
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
-    <Property Name="Contact" Type="int" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
     <Property Name="Email" Type="varchar" MaxLength="50" />
-    <Property Name="Role" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Course_Teacher">
     <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />

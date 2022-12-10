@@ -12,8 +12,6 @@ namespace JunaidAcademy.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web.Mvc;
 
     public partial class User
     {
@@ -22,7 +20,7 @@ namespace JunaidAcademy.Models
         {
             this.CourseAssigns = new HashSet<CourseAssign>();
         }
-    
+
         public int UserID { get; set; }
         [Required]
         public string Username { get; set; }
@@ -34,13 +32,11 @@ namespace JunaidAcademy.Models
         [Required]
         public string LastName { get; set; }
         [Required]
-        public Nullable<int> Contact { get; set; }
+        public string Contact { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [NotMapped]
-        public string Role { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CourseAssign> CourseAssigns { get; set; }
     }

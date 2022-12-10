@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="JunaidAcademyModel.Course" Width="1.5" PointX="5.625" PointY="5" />
         <EntityTypeShape EntityType="JunaidAcademyModel.CourseAssign" Width="1.5" PointX="7.875" PointY="5.5" />
         <EntityTypeShape EntityType="JunaidAcademyModel.Teacher" Width="1.5" PointX="3.375" PointY="5.25" />
-        <EntityTypeShape EntityType="JunaidAcademyModel.User" Width="1.5" PointX="2.25" PointY="8.125" />
+        <EntityTypeShape EntityType="JunaidAcademyModel.User" Width="1.5" PointX="1.75" PointY="7.75" />
         <AssociationConnector Association="JunaidAcademyModel.FK_Course_Teacher" />
         <AssociationConnector Association="JunaidAcademyModel.FK_CourseAssign_Course1" />
         <AssociationConnector Association="JunaidAcademyModel.FK_CourseAssign_User1" />

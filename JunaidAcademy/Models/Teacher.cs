@@ -11,7 +11,6 @@ namespace JunaidAcademy.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Teacher
@@ -21,25 +20,25 @@ namespace JunaidAcademy.Models
         {
             this.Courses = new HashSet<Course>();
         }
-    
+
         public int TeacherID { get; set; }
-        
+
         [Display(Name = "Teacher Name")]
         [Required]
         public string TName { get; set; }
-        
-        [Display(Name = "Prefix")]
+
+        [Display(Name = "Mr/Ms")]
         [Required]
         public string TGender { get; set; }
-        
+
         [Display(Name = "Subject")]
         [Required]
         public string TSubject { get; set; }
-        
+
         [Display(Name = "Contact")]
-        public Nullable<int> TContact { get; set; }
+        public string TContact { get; set; }
         public string Image { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
     }
