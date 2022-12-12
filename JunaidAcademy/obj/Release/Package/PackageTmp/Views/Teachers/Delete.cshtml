@@ -1,0 +1,69 @@
+﻿@model JunaidAcademy.Models.Teacher
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="spacer">
+</div>
+<div class="container">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Teacher</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TGender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TSubject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TSubject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TContact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TContact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>
+<div class="spacer"></div>

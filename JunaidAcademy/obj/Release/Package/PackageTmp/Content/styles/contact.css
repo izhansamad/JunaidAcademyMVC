@@ -1,0 +1,150 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900');
+
+.home
+{
+	width: 100%;
+	height: 90px;
+
+}
+.table{
+	margin-top: 20px;
+	color: black;
+	}
+.btn{
+	display: flex;
+}
+.enroll_btn{
+	margin: auto !important;
+	width: 220px !important;
+}
+
+.headerimg_container{
+	height: 450px;
+	/* width: 100%; */
+	/*background-image: url(../images/about_1.jpg);*/
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	
+}
+.contact
+{
+	width: 100%;
+	padding-bottom: 100px;
+}
+#content
+{
+	width: 180px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	color: #76777a;
+	line-height: 1.71;
+}
+.contact_info_container
+{
+	margin-top: 100px;
+}
+.contact_info_title
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 36px;
+	font-weight: 700;
+	color: #384158;
+}
+.contact_form
+{
+	padding-right: 10px;
+}
+.comment_form
+{
+	margin-top: 30px;
+}
+.comment_input
+{
+	width: 100%;
+	height: 46px;
+	border: solid 1px #d9d9d9;
+	border-radius: 3px;
+	padding-left: 19px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #2c3145;
+}
+.comment_form > div:not(:last-child)
+{
+	margin-bottom: 25px;
+}
+.comment_input:focus
+{
+	border: solid 1px #efaf06;
+	outline: none;
+}
+.comment_textarea
+{
+	width: 100%;
+	height: 150px;
+	padding-top: 15px;
+}
+.form_title
+{
+	font-size: 16px;
+	font-weight: 400;
+	color: #384158;
+	margin-bottom: 12px;
+}
+.comment_button
+{
+	width: 150px;
+	height: 46px;
+	background: #efaf06;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	color: #FFFFFF;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	margin-top: 15px;
+}
+.comment_button:hover
+{
+	box-shadow: 0px 5px 40px rgba(0,0,0,0.25);
+}
+.contact_info
+{
+	padding-left: 45px;
+}
+.contact_info_text
+{
+	margin-top: 27px;
+}
+.contact_info_location
+{
+	margin-top: 28px;
+}
+.contact_info_location_title
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 18px;
+	font-weight: 700;
+	color: #384158;
+}
+.location_list
+{
+	margin-top: 14px;
+}
+.location_list li
+{
+	font-size: 14px;
+	color: #5e6271;
+}
+.location_list li:not(:last-child)
+{
+	margin-bottom: 9px;
+}

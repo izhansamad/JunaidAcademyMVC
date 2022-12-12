@@ -1,0 +1,62 @@
+﻿@model JunaidAcademy.Models.Teacher
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="spacer">
+</div>
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Teacher</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TGender)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TName)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TSubject)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TSubject)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TContact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TContact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.TeacherID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<div class="spacer"></div>

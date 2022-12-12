@@ -136,7 +136,7 @@
                                     <div class="teacher_image"><img src="~/Content/images/faculty.png" alt=""></div>
                                 }
                                 <div class="teacher_title">
-                                    <div class="teacher_name"><a href="#">@Html.DisplayFor(modelItem => modelItem.Teacher.TName)</a></div>
+                                    <div class="teacher_name"><a href="#">@Html.DisplayFor(modelItem => modelItem.Teacher.TGender) @Html.DisplayFor(modelItem => modelItem.Teacher.TName)</a></div>
                                     <div class="teacher_position">@Html.DisplayFor(modelItem => modelItem.Teacher.TSubject)</div>
                                 </div>
                             </div>

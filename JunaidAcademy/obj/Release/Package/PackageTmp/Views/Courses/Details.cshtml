@@ -1,0 +1,78 @@
+﻿@model JunaidAcademy.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="spacer"></div>
+<div class="container">
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseFee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseFee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDuration)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDuration)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseSeats)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseSeats)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseImg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseImg)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Teacher.TName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Teacher.TName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CourseID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<div class="spacer"></div>

@@ -1,0 +1,154 @@
+﻿@using System.Linq;
+@using System.Data.Entity;
+@model JunaidAcademy.Models.Course
+@{
+    ViewBag.Title = "Course";
+}
+@section coursecss{
+    <link href="~/Content/styles/course.css" rel="stylesheet" />
+}
+
+
+<!-- Course -->
+
+<div class="course">
+    <div class="container">
+        <div class="row">
+            <!-- Course -->
+            <div class="col-lg-8">
+
+                <div class="course_container">
+                    <div class="course_title">@Html.DisplayFor(modelItem => modelItem.CourseName)</div>
+
+                    <!-- Course Image -->
+                    @if (Model.CourseImg != null)
+                    {
+                        <div class="course_image"><img src="@Url.Content(Model.CourseImg)" alt=""></div>
+                    }
+                    else
+                    {
+                       <div class="course_image"><img src="~/Content/images/course_image.jpg" alt=""></div>
+                    }
+
+                    <!-- Course Tabs -->
+                    <div class="course_tabs_container">
+                        <div class="tabs d-flex flex-row align-items-center justify-content-start">
+                            <div class="tab active">description</div>
+                            <div class="tab">Enroll Now</div>
+                        </div>
+                        <div class="tab_panels">
+
+                            <!-- Description -->
+                            <div class="tab_panel active">
+                                <div class="tab_panel_title">@Html.DisplayFor(modelItem => modelItem.CourseName)</div>
+                                <div class="tab_panel_content">
+                                    <div class="tab_panel_text">
+                                        <p>@Html.DisplayFor(modelItem => modelItem.CourseDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab_panel tab_panel_2">
+                                <div class="tab_panel_content">
+                                    <div class="tab_panel_title">@Html.DisplayFor(modelItem => modelItem.CourseName)</div>
+                                    <div class="tab_panel_content">
+                                        <div class="col-lg-12">
+                                            <div class="contact_form">
+                                                <!-- <div class="contact_info_title">Contact Form</div> -->
+                                                @{ if (User.Identity.IsAuthenticated)
+                                                    {
+
+                                                        if (TempData["AlreadyRegistered"] != null)
+                                                        {
+                                                            <div class="alert alert-success my-3">@TempData["AlreadyRegistered"].ToString()</div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <h3 class="my-4">Do You Want to Enroll in this Course?</h3>
+                                                            <div class="d-flex my-2">
+                                                                <div class="m-auto">
+                                                                    @using (Html.BeginForm("AddCourse", "Home", FormMethod.Post))
+                                                                    {
+                                                                        @Html.TextBoxFor(m => m.CourseID, new { @name = "CourseID", @style = "display: none;" })
+                                                                        @Html.AntiForgeryToken()
+                                                                        <button class="comment_button trans_200" type="submit">YES</button>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        }
+
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <h4 class="my-4">Please Login to Enroll in this Course</h4>
+                                                        <div class="d-flex my-4">
+                                                            <button class="comment_button trans_200 m-auto">@Html.ActionLink("Login", "Login", "Home", null, new { id = "OT", style = "color: white" })</button>
+                                                        </div>
+
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+
+                    <!-- Feature -->
+                    <div class="sidebar_section">
+                        <div class="sidebar_section_title">Course Feature</div>
+                        <div class="sidebar_feature">
+                            <div class="course_price">Rs @Html.DisplayFor(modelItem => modelItem.CourseFee)</div>
+
+                            <!-- Features -->
+                            <div class="feature_list">
+
+                                <!-- Feature -->
+                                <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                    <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Duration:</span></div>
+                                    <div class="feature_text ml-auto">@Html.DisplayFor(modelItem => modelItem.CourseDuration)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feature -->
+                    <div class="sidebar_section">
+                        <div class="sidebar_section_title">Teacher</div>
+                        <div class="sidebar_teacher">
+                            <div class="teacher_title_container d-flex flex-row align-items-center justify-content-start">
+                                @if (Model.Teacher.Image != null)
+                                {
+                                    <div class="teacher_image"><img src="@Url.Content(Model.Teacher.Image)" alt=""></div>
+                                }
+                                else                         {
+                                    <div class="teacher_image"><img src="~/Content/images/faculty.png" alt=""></div>
+                                }
+                                <div class="teacher_title">
+                                    <div class="teacher_name"><a href="#">@Html.DisplayFor(modelItem => modelItem.Teacher.TName)</a></div>
+                                    <div class="teacher_position">@Html.DisplayFor(modelItem => modelItem.Teacher.TSubject)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+</div>
+@section course_js{
+    <script src="~/Content/js/course.js"></script>
+}

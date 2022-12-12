@@ -1,0 +1,264 @@
+﻿@using JunaidAcademy.Models;
+@model dynamic
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- Home -->
+
+<div class="home_index">
+    <div class="home_slider_container">
+
+        <!-- Home Slider -->
+        <div class="owl-carousel owl-theme home_slider">
+
+            <!-- Home Slider Item -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(../Content/images/home_slider_1.jpg)"></div>
+                <div class="home_slider_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="home_slider_title" style="font-size: 50px;">Welcome to Junaid <span style="color:#efaf06;">Academy</span></div>
+                                <div class="home_slider_subtitle">The Future Of Education Technology</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Slider Item -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(../Content/images/home_slider_1.jpg)"></div>
+                <div class="home_slider_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="home_slider_title">Admission Open</div>
+                                <div class="home_slider_subtitle">Enroll Now!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Slider Item -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(../Content/images/home_slider_1.jpg)"></div>
+                <div class="home_slider_content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="home_slider_title">Expert Certified Faculty</div>
+                                <div class="home_slider_subtitle">Future Of Education Technology</div>
+                                <div class="home_slider_form_container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Home Slider Nav -->
+
+    <div class="home_slider_nav home_slider_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+    <div class="home_slider_nav home_slider_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+</div>
+
+
+<!-- Popular Courses -->
+
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="../Content/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Our Featured Courses</h2>
+                    <div class="section_subtitle"><p>Our courses are designed to give you the skills and knowledge you need to succeed in your chosen field. We have courses in a variety of topics, ranging from business and finance to computer science and engineering.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row courses_slick">
+            @foreach (Course item in Model.courseList)
+            {
+                <!-- Course -->
+                <div class="col-lg-12 course_col">
+                    <div class="course">
+                        @if(item.CourseImg != null)
+                        {
+                            <div class="course_image" style="height: 220px !important"><img src="@Url.Content(item.CourseImg)" alt=""></div>
+
+                        }
+                        else
+                        {
+                            <div class="course_image" style="height: 220px !important"><img src="~/Content/images/course_1.jpg" alt=""></div>
+
+                        }
+                        <div class="course_body" style="height: 192px !important">
+                            <h3 class="course_title">
+                                <a href="@Url.Action("Course", "Home", new { id = item.CourseID }, null)">
+                                    @Html.DisplayFor(modelItem => item.CourseName)
+                                </a>
+                            </h3>
+                            <div class="course_teacher">@Html.DisplayFor(modelItem => item.Teacher.TGender)  @Html.DisplayFor(modelItem => item.Teacher.TName)</div>
+                            <div class="course_text">
+                                @*<p>@Html.DisplayFor(modelItem => item.CourseDescription)</p>*@
+                                @{ 
+                                    var words = item.CourseDescription.Split(' ');
+                                    var first15words = words.Take(15);
+                                    string first15WordsString = string.Join(" ", first15words);
+                                }
+                                <p>@first15WordsString</p>
+                            </div>
+                        </div>
+                        <div class="course_footer">
+                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="course_info">
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    <span>@Html.DisplayFor(modelItem => item.CourseSeats) Student</span>
+                                </div>
+                                <div class="course_price ml-auto">Rs @Html.DisplayFor(modelItem => item.CourseFee)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200">@Html.ActionLink("View All Courses", "Courses", "Home", new { @style = "color:white;" })</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Counter -->
+
+<div class="counter">
+    <div class="counter_background" style="background-image:url(../Content/images/counter_background.jpg)"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="counter_content">
+                    <h2 class="counter_title">Register Now</h2>
+                    <div class="counter_text"><p>We are excited to offer a variety of courses that can help you reach your goals. Our courses are designed to give you the skills and knowledge you need to succeed in your chosen field. Don't wait any longer, register now and start your journey towards success!</p></div>
+
+                    <!-- Milestones -->
+
+                    <div class="milestones d-flex flex-md-row flex-column align-items-center justify-content-between">
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="4">0</div>
+                            <div class="milestone_text">years</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="1800" data-sign-after="+">0</div>
+                            <div class="milestone_text">Students</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="500" data-sign-after="+">0</div>
+                            <div class="milestone_text">A+ Grades</div>
+                        </div>
+
+                        <!-- Milestone -->
+                        <div class="milestone">
+                            <div class="milestone_counter" data-end-value="25" data-sign-after="+">0</div>
+                            <div class="milestone_text">courses</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @*<div class="counter_form">
+                <div class="row fill_height">
+                    <div class="col fill_height">
+                        <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+                            <div class="counter_form_title">Register Yourself Now!</div>
+                            <input type="text" class="counter_input" placeholder="Your Name:" required="required">
+                            <input type="tel" class="counter_input" placeholder="Phone:" required="required">
+                            <select name="counter_select" id="counter_select" class="counter_input counter_options">
+                                <option>Choose Course</option>
+                                <option>Course 1</option>
+                                <option>Course 2</option>
+                                <option>Course 3</option>
+                            </select>
+                            <textarea class="counter_input counter_text_input" placeholder="Message:" required="required"></textarea>
+                            <button type="submit" class="counter_form_button">submit now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>*@
+
+    </div>
+</div>
+
+
+
+<!-- Team -->
+
+<div class="team">
+    <div class="team_background parallax-window" data-parallax="scroll" data-image-src="~/Content/images/team_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">Our Faculty</h2>
+                    <div class="section_subtitle"><p>Our courses are taught by experienced instructors who have years of experience in their respective fields. They will provide you with the guidance and support you need to succeed. Our courses are designed to be both challenging and rewarding, so you will be able to get the most out of your learning experience.</p></div>
+                </div>
+            </div>
+        </div>
+        <div class="row team_row">
+
+            @foreach (Teacher item in Model.teacherList)
+            {
+                <!-- Team Item -->
+                <div class="col-lg-3 col-md-6 team_col">
+                    <div class="team_item">
+                        @if (item.Image != null)
+                        {
+                            <div class="team_image"><img src="@Url.Content(item.Image)" alt=""></div>
+
+                        }
+                        else
+                        {
+                            <div class="team_image"><img src="~/Content/images/faculty.png" alt=""></div>
+
+                        }
+                        <div class="team_body">
+                            <div class="team_title"><a href="#">@Html.DisplayFor(modelItem => item.TName)</a></div>
+                            <div class="team_subtitle">@Html.DisplayFor(modelItem => item.TSubject)</div>
+                            <div class="social_list">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="courses_button trans_200">@Html.ActionLink("View Full Faculty", "Faculty", "Home", new { @style = "color:white;" })</div>
+            </div>
+        </div>
+    </div>
+</div>

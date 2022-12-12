@@ -1,0 +1,83 @@
+﻿@model JunaidAcademy.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<!--<div class="headerimg_container">-->
+    <!-- <img src="./images/home_slider_1.jpg" alt=""> -->
+    <!--<div class="home_slider_content">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="home_slider_title" style="font-size: 50px;">
+                        Junaid <span style="color:#efaf06;">Academy</span>
+                    </div>
+                    <div class="home_slider_subtitle"
+                         style="font-weight: 900; color: #384158; font-size: 25px;">Login</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+<div class="courses">
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="section_title_containers text-center">
+                    <h2 class="section_title">Login</h2>
+                    <div class="section_subtitle"><p style="font-size: 17px;"></p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="justify-content: center;">
+
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                <div class="my-1">
+                                @Html.ActionLink("Dont Have an Account? Register Here", "Register", "Home")
+                                </div>
+                                <div class="my-1">
+                                    @Html.ValidationMessage("Error",new {@style = "color:red;"})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10 d-flex">
+                                <button type="submit" class="comment_button trans_200" style="margin: auto;">Login</button>
+                                @*<input type="submit" value="Register" class="comment_button trans_200" style="margin: auto;" />*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

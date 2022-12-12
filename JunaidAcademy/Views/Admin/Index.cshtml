@@ -9,11 +9,10 @@
     <h2 class="text-center">Welcome To Junaid Academy Admin Dashboard!</h2>
     <div class="d-flex my-5">
         <div class="m-auto">
-    <button class="comment_button trans_200">@Html.ActionLink("Users", "Index", "Users", null, new { id = "OT", style = "color: white" })</button>
-    <button class="comment_button trans_200 mx-2">@Html.ActionLink("Teachers","Index","Teachers", null, new { id = "OT", style = "color: white" })</button>
-    <button class="comment_button trans_200 mx-2">@Html.ActionLink("Courses","Index","Courses", null, new { id = "OT", style = "color: white" })</button>
-    <button class="comment_button trans_200">@Html.ActionLink("Assign Course","Index","CourseAssigns", null, new { id = "OT", style = "color: white" })</button>
-
+            <button class="comment_button trans_200" onclick="location.href='@Url.Action("Index","Users", new { id = "OT" })'">Users</button>
+            <button class="comment_button trans_200 mx-1" onclick="location.href='@Url.Action("Index","Teachers", new { id = "OT" })'">Teachers</button>
+            <button class="comment_button trans_200 mx-1" onclick="location.href='@Url.Action("Index","Courses", new { id = "OT" })'">Courses</button>
+            <button class="comment_button trans_200" onclick="location.href='@Url.Action("Index","CourseAssigns", new { id = "OT" })'">Assign Course</button>
         </div>
     </div>
 </div>

@@ -3,6 +3,7 @@
     "",
     "\\JunaidAcademy",
     "\\JunaidAcademy\\Controllers",
+    "\\JunaidAcademy\\Models",
     "\\JunaidAcademy\\Views",
     "\\JunaidAcademy\\Views\\Admin",
     "\\JunaidAcademy\\Views\\Users"

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<JunaidAcademy.Models.Teacher>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="spacer">
+</div>
+<div class="container">
+    @Html.ActionLink("Back", "Index", "Admin")
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TSubject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TSubject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TContact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TeacherID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.TeacherID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TeacherID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="spacer"></div>

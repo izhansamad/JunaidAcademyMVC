@@ -51,7 +51,7 @@
                             <div class="team_image"><img src="~/Content/images/faculty.png" alt=""></div>
                         }
                         <div class="team_body">
-                            <div class="team_title"><a href="#">@Html.DisplayFor(modelItem => item.TName)</a></div>
+                            <div class="team_title"><a href="#">@Html.DisplayFor(modelItem => item.TGender) @Html.DisplayFor(modelItem => item.TName)</a></div>
                             <div class="team_subtitle">@Html.DisplayFor(modelItem => item.TSubject)</div>
                             <div class="social_list">
                                 <ul>
@@ -71,3 +71,4 @@
     </div>
 </div>
 
+<div class="spacer"></div>
