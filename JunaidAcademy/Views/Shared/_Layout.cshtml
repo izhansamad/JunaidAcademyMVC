@@ -65,15 +65,31 @@
                         <div class="col">
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="logo_container">
-                                    <a href="#">
-                                        <div class="logo_text">
-                                            <span>
-                                                <image src="~/Content/images/logo.png" style="    width: 35px;
+                                    @if(User.Identity.Name == "Admin" || User.Identity.Name == "admin")
+                {
+<a href="@Url.Action("Index","Admin")">
+    <div class="logo_text">
+        <span>
+            <image src="~/Content/images/logo.png" style="    width: 35px;
 										margin-right: 10px;
 									">
-                                            </span>Junaid <span>Academy</span>
-                                        </div>
-                                    </a>
+        </span>Junaid <span>Academy</span>
+    </div>
+</a>
+}
+else
+                {
+                                <a href="@Url.Action("Index","Student")">
+                                    <div class="logo_text">
+                                        <span>
+                                            <image src="~/Content/images/logo.png" style="    width: 35px;
+										margin-right: 10px;
+									">
+                                        </span>Junaid <span>Academy</span>
+                                    </div>
+                                </a>
+                }
+                                    
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
@@ -157,7 +173,7 @@
                         <div class="col">
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="logo_container">
-                                    <a href="#">
+                                    <a href="@Url.Action("Index","Home")">
                                         <div class="logo_text">
                                             <span>
                                                 <image src="~/Content/images/logo.png" style="    width: 35px;
