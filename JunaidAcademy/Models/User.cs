@@ -23,11 +23,14 @@ namespace JunaidAcademy.Models
 
         public int UserID { get; set; }
         [Required]
+        [MinLength(3)]
         public string Username { get; set; }
         [Required]
+        [MinLength(5)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required]
+        [MinLength(3)]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }

@@ -20,6 +20,7 @@
     <Property Name="CourseAssignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" />
     <Property Name="CourseID" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

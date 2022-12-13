@@ -11,12 +11,15 @@ namespace JunaidAcademy.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class CourseAssign
     {
         public int CourseAssignID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> CourseID { get; set; }
+        [DefaultValue("Pending")]
+        public string Status { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual User User { get; set; }

@@ -25,6 +25,7 @@
           <Property Name="CourseAssignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" />
           <Property Name="CourseID" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -212,6 +213,7 @@
           <Property Name="CourseID" Type="Int32" />
           <NavigationProperty Name="Course" Relationship="JunaidAcademyModel.FK_CourseAssign_Course1" FromRole="CourseAssign1" ToRole="Course1" />
           <NavigationProperty Name="User" Relationship="JunaidAcademyModel.FK_CourseAssign_User1" FromRole="CourseAssign1" ToRole="User1" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -221,7 +223,7 @@
           <Property Name="TName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TContact" Type="String" />
+          <Property Name="TContact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Courses" Relationship="JunaidAcademyModel.FK_Course_Teacher" FromRole="Teacher" ToRole="Course1" />
         </EntityType>
@@ -234,7 +236,7 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" />
+          <Property Name="Contact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CourseAssigns" Relationship="JunaidAcademyModel.FK_CourseAssign_User1" FromRole="User1" ToRole="CourseAssign1" />
         </EntityType>
@@ -308,6 +310,7 @@
           <EntitySetMapping Name="CourseAssigns">
             <EntityTypeMapping TypeName="JunaidAcademyModel.CourseAssign">
               <MappingFragment StoreEntitySet="CourseAssign">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="CourseAssignID" ColumnName="CourseAssignID" />

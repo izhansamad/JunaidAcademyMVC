@@ -6,6 +6,8 @@
     "\\JunaidAcademy\\Models",
     "\\JunaidAcademy\\Views",
     "\\JunaidAcademy\\Views\\Admin",
+    "\\JunaidAcademy\\Views\\Home",
+    "\\JunaidAcademy\\Views\\Shared",
     "\\JunaidAcademy\\Views\\Users"
   ],
   "SelectedNode": "\\JunaidAcademyMVC.sln",

@@ -50,7 +50,7 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseAssignID,UserID,CourseID")] CourseAssign courseAssign)
+        public ActionResult Create([Bind(Include = "CourseAssignID,UserID,CourseID,Status")] CourseAssign courseAssign)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace JunaidAcademy.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseAssignID,UserID,CourseID")] CourseAssign courseAssign)
+        public ActionResult Edit([Bind(Include = "CourseAssignID,UserID,CourseID,Status")] CourseAssign courseAssign)
         {
             if (ModelState.IsValid)
             {

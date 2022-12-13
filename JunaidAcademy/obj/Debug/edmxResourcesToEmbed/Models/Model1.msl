@@ -29,6 +29,7 @@
     <EntitySetMapping Name="CourseAssigns">
       <EntityTypeMapping TypeName="JunaidAcademyModel.CourseAssign">
         <MappingFragment StoreEntitySet="CourseAssign">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="CourseAssignID" ColumnName="CourseAssignID" />

@@ -5,18 +5,21 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="sidebar col-3">
 
-        </div>
+    <div class="row"  style="margin-top: 50px;">
+    @if(Model.Any(x=> x.Status == "Pending"))
+            {
+        <div class="alert alert-danger my-3 mx-2" style="width: 100%;">Please Pay your dues to get your Course Status Active</div>
+            }
         <div class="table col-12">
-            <h2 style="margin-top: 60px;">Enrolled Courses</h2>
+            <h2>Enrolled Courses</h2>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th class="table-active" scope="col"></th>
                         <th class="table-active" scope="col">@Html.DisplayNameFor(model => model.Course.CourseName)</th>
                         <th class="table-active" scope="col">Teacher</th>
+                        <th class="table-active" scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,11 +27,27 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td class="table-success" scope="row">@i</td>
-                            <td class="table-success">
-                                @Html.DisplayFor(modelItem => item.Course.CourseName)
-                            </td>
-                            <td class="table-success">@Html.DisplayFor(modelItem => item.Course.Teacher.TName)</td>
+                            @if (item.Status == "Pending")
+                            {
+                                <td class="table-warning" scope="row">@i</td>
+                                <td class="table-warning">@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                                <td class="table-warning">@Html.DisplayFor(modelItem => item.Course.Teacher.TName)</td>
+                                <td class="table-warning">@Html.DisplayFor(modelItem => item.Status)</td>
+                            }
+                            @if (item.Status == "Active")
+                            {
+                                <td class="table-info" scope="row">@i</td>
+                                <td class="table-info">@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                                <td class="table-info">@Html.DisplayFor(modelItem => item.Course.Teacher.TName)</td>
+                                <td class="table-info">@Html.DisplayFor(modelItem => item.Status)</td>
+                            }
+                            @if (item.Status == "Completed")
+                            {
+                                <td class="table-success" scope="row">@i</td>
+                                <td class="table-success">@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                                <td class="table-success">@Html.DisplayFor(modelItem => item.Course.Teacher.TName)</td>
+                                <td class="table-success">@Html.DisplayFor(modelItem => item.Status)</td>
+                            }
                         </tr>
                         @(i++)
                     }
@@ -41,4 +60,4 @@
 
     </div>
 </div>
-
+<div class="spacer"></div>

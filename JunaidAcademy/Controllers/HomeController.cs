@@ -84,6 +84,7 @@ namespace JunaidAcademy.Controllers
             {
                 UserID = GetUserID(),
                 CourseID = Int32.Parse(CourseID),
+                Status = "Pending",
             };
             db.CourseAssigns.Add(courseAssign);
             db.SaveChanges();
